@@ -11,6 +11,7 @@ import Event from "./routes/event/Event";
 import One from "./routes/event/One";
 import Two from "./routes/event/Two";
 import axios from "axios";
+import Cart from "./routes/Cart";
 
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
                         <Nav.Link onClick={() => {
                             navigate('/detail')
                         }}>Detail</Nav.Link>
+                        <Nav.Link onClick={() => {
+                            navigate('/cart')
+                        }}>Cart</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
@@ -58,6 +62,7 @@ function App() {
                     </>
                 }/>
                 <Route path="/detail/:id" element={<Detail shoes={shoes}/>}/>
+                <Route path="/cart" element={<Cart/>}/>
                 <Route path="/event" element={<Event/>}>
                     <Route path="one" element={<One/>}/>
                     <Route path="two" element={<Two/>}/>
