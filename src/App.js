@@ -2,7 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
 import mainImg from './img/bg.png';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import data from './data';
 import Products from "./Products";
 import {Routes,Route,Link,useNavigate,Outlet} from "react-router-dom";
@@ -29,6 +29,18 @@ function App() {
                 console.log('실패 ㅅㄱㅇ;')
             })
     }
+
+    useEffect(()=> {
+        //localStorage에 데이터가 있는 경우에는 초기화 제외
+
+        const watchedData = JSON.parse(localStorage.getItem('watched'))
+
+        if(!watchedData){
+            localStorage.setItem('watched', JSON.stringify([]))
+        }
+        },[])
+
+
 
     return (
         <div className="App">

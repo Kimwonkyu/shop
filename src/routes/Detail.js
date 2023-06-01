@@ -19,6 +19,20 @@ const Detail =(props) => {
     const [text, setText] = useState('');
 
     useEffect(() => {
+        let getFromLocalStorage = localStorage.getItem('watched');
+        getFromLocalStorage = JSON.parse(getFromLocalStorage);
+        getFromLocalStorage.push(shoe.id);
+
+        //중복제거를 위해 set을 이용한다.
+        getFromLocalStorage = new Set(getFromLocalStorage)
+        getFromLocalStorage = Array.from(getFromLocalStorage);
+
+        localStorage.setItem('watched', JSON.stringify(getFromLocalStorage))
+
+    },[])
+
+
+    useEffect(() => {
         const timer = setTimeout(() => {
             setShowAlert(false);
         }, 2000)
